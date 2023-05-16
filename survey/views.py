@@ -46,8 +46,6 @@ def index(request: HtmxHttpRequest) -> HttpResponse:
                     "success": True
                 }
             )
-        else:
-            print('error')
     return render(request, "survey/index.html", 
         {
             "form": form
