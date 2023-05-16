@@ -29,5 +29,3 @@ class Survey(TimeStamped):
 
     def __str__(self):
         return f'Survey by: {self.name}'
-
-
