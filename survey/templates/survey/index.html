@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}Petty Survey 0.1{% endblock %}
+
+{% block page_title %}Petty Survey 0.1{% endblock %}
+
+{% block content %}
+<form hx-post="{% url 'survey:index' %}" hx-target="this" hx-swap="none" id="survey-form">
+    <div class="form-floating mb-3">
+        {% render_field form.name class="form-control" autocomplete="off" %}
+        <label for="id_name">{{ form.name.label }}</label>
+    </div>
+
+    <div class="row">
+        <div class="form-floating mb-3 col-6">
+            <input type="email" name="{{ form.email_address.name }}" id="id_email_address" class="form-control" autocomplete="off"
+                hx-post="{% url 'survey:validate_email_address' %}" hx-target="#id_email_address_error_message" hx-include="this">
+            <label for="id_email_address">{{ form.email_address.label }}</label>
+            <div class='invalid-feedback' id="id_email_address_error_message"></div>
+        </div>
+        <div class="form-floating mb-3 col-6">
+            <input type="text" name="{{ form.phone_number.name }}" id="id_phone_number" class="form-control" autocomplete="off"
+                hx-post="{% url 'survey:validate_phone_number' %}" hx-target="#id_phone_number_error_message" hx-include="this">
+            <label for="id_phone_number">{{ form.phone_number.label }}</label>
+            <div class='invalid-feedback' id="id_phone_number_error_message"></div>
+        </div>
+    </div>
+
+    <div class="form-floating mb-3">
+        {% render_field form.comment class="form-control" autocomplete="off" %}
+        <label for="id_comment">{{ form.comment.label }}</label>
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg btn-pill" id="surveybtn">Send survey</button>
+    </div>
+</form>
+{% endblock %}
