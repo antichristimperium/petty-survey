@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import time
-
 from django.http import HttpRequest
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -41,7 +39,6 @@ def index(request: HtmxHttpRequest) -> HttpResponse:
     if request.htmx and request.POST:
         if form.is_valid():
             form.save()
-            time.sleep(4) # just for test
             return trigger_client_event(
                 HttpResponse(status=202),
                 "saveComplete",

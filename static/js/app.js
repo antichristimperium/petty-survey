@@ -31,9 +31,12 @@ htmx.on("saveComplete", (e) => {
             'Thanks!',
             'success'
         )
-        document.getElementsByTagName("input").forEach((element) => {
-            element.classList.remove('is-invalid');
-            element.classList.remove('is-valid');
+        var fields = document.querySelectorAll("input");
+
+        [].forEach.call(fields, function (el) {
+            el.classList.remove("is-invalid")
+            el.classList.remove("is-valid")
+            el.classList.add("form-control")
         });
     }
 })
