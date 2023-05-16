@@ -25,4 +25,4 @@ INSTALLED_APPS = [
 DISPOSABLE_EMAIL_DOMAINS = "/path_to_your/disposable_email_domains.txt"
 ````
 
-Finally `python manage.py runserver`.
+Finally `python manage.py migrate` then `python manage.py runserver`.
