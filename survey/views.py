@@ -57,19 +57,6 @@ def index(request: HtmxHttpRequest) -> HttpResponse:
 
 @require_POST
 def validate_email_address(request: HttpRequest) -> HttpResponse:
-    possible_message_error, field_name = find_possible_field_error(request, EmailForm)
-    return trigger_client_event(
-        HttpResponse(possible_message_error),
-        "loadError",
-        {
-            "is_there_error": len(possible_message_error) > 0,
-            "field_name": f"id_{field_name}",
-        }
-    )
-
-
-@require_POST
-def validate_email_address(request: HttpRequest) -> HttpResponse:
     possible_message_error, field_name = find_possible_field_error(
         request, EmailForm)
     return response_field_validation(possible_message_error, field_name)
