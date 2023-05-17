@@ -54,14 +54,14 @@ def index(request: HtmxHttpRequest) -> HttpResponse:
 
 
 @require_POST
-def validate_email_address(request: HttpRequest) -> HttpResponse:
+def validate_email_address(request: HtmxHttpRequest) -> HttpResponse:
     possible_message_error, field_name = find_possible_field_error(
         request, EmailForm)
     return response_field_validation(possible_message_error, field_name)
 
 
 @require_POST
-def validate_phone_number(request: HttpRequest) -> HttpResponse:
+def validate_phone_number(request: HtmxHttpRequest) -> HttpResponse:
     possible_message_error, field_name = find_possible_field_error(
         request, PhoneNumberForm)
     return response_field_validation(possible_message_error, field_name)
