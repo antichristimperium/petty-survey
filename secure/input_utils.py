@@ -2,8 +2,9 @@ from __future__ import annotations
 
 import re
 
-from django.http import HttpRequest
 from django.forms import Form
+from django.http import HttpRequest
+
 
 
 def is_valid_email(email):
@@ -26,5 +27,6 @@ def find_possible_field_error(request: HttpRequest, form: Form ) -> str:
     field_name = [x for x in current_form.fields.keys()][0]
     possible_message_error: str = ""
     if not current_form.is_valid():
-        possible_message_error = current_form.errors.as_data().get('__all__')[0].message
+        possible_message_error = current_form.errors.as_data()\
+            .get('__all__')[0].message
     return possible_message_error, field_name

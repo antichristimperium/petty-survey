@@ -5,8 +5,9 @@ from django.utils.translation import gettext_lazy as _
 
 from django_email_blacklist import DisposableEmailChecker
 
-from secure.input_utils import is_valid_email, is_valid_phone_number
 from survey.models import Survey
+from secure.input_utils import is_valid_email, is_valid_phone_number
+
 
 
 email_checker = DisposableEmailChecker()
